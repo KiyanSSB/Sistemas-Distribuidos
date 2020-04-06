@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body  style="background-color:LAVENDER";>
+	<h1>Parking</h1>
+	<a href=/index.html>Inicio</a>
+	
+	

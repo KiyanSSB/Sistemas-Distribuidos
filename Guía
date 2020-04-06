@@ -1,0 +1,78 @@
+----------------Parte Server ( TODO EN UNA TERMINAL )
+
+Compilar en Server con :
+
+	"javac ServidorThread.java Servidor.java -d ."
+
+
+Creará una carpeta llamada Server : es el paquete que contiene las clases
+
+a continuación iniciar el archivo del server con:
+
+
+ 	"java Server.Servidor" 
+
+Si se quieren meter parametros
+
+	"Server.Servidor <puerto> <hostDelControlador> <puertoControlador> <maximoConexiones>" 
+
+
+Si todo sale bien , pedirá los datos del servidor o los recibirá por parametro y se quedará colgado esperando alguna petición
+
+
+--------------Parte Registro Objetos Remotos( NECESITA 2 TERMINALES )
+
+Abrimos una 2ª maquina virtual.
+
+Nos situamos en la carpeta Parking dentro del directorio src (src/Parking)
+
+En dicha maquina compilamos los archivos: ObjetoR.java , Interfaz.java y Registro.java
+
+Se encuentran en el paquete Parking con lo que se compilará como 
+
+	"javac ObjetoR.java Interfaz.java Registro.java -d ."
+
+Una vez compilado, si todo va bien (saldrá un error de api deprecated , ignorarlo dado que no genera problemas) , ejecutar en la misma máquina virtual , en el mismo directorio donde estamos
+
+	"rmiregistry -J-Djava.security.policy=registrar.policy"
+
+
+Si todo va bien , la maquina se quedará colgada 
+
+
+---Abrimos la 3º maquina virtual 
+
+Nos situamos en la carpeta Parking dentro del directorio src (src/Parking)
+
+	"java -Djava.security.policy=registrar.policy Parking.Registro"
+
+Si todo va bien , registrará X objetos (Selección aleatoria de objetos) y se quedará colgado
+
+
+--------------------Parte ejecución del controlador (Necesita una terminal)
+
+Nos situamos en la carpeta Parking dentro del directorio src (src/Parking)
+
+	"javac Controller.java -d ."
+
+Una vez completado todo lo de atrás , ejecutar (requiere de paso de parametros si o si , se entiende en la llamada que usamos valores por defecto)
+
+	"java -Djava.security.policy=registrar.policy Parking.Controller localhost 1099 8081"
+
+Si esto va bien , escuchará el puerto de la pagina y funcionará el controlador de las sondas
+
+
+--------------------- Navegador (requiere Browser ... mozilla chrome )
+
+Una vez ejecutado todo, asumiendo valores por defecto, abrimos el navegador y ponemos en la URL
+	localhost:8080
+El servidor local nos devolverá el index de la página y ya podemos navegar en ella 
+
+
+
+
+
+
+
+
+
